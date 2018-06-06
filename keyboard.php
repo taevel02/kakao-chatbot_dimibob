@@ -1,5 +1,5 @@
 <?php
-  echo '
+  echo <<< EOD
     {
       "type": "buttons"
       "buttons": [
@@ -7,5 +7,5 @@
         "내일 급식"
       ]
     }
-  ';
+  EOD;
 ?>
