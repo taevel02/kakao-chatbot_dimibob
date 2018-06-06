@@ -33,4 +33,14 @@ echo <<< EDO
   }
 EDO;
 }
+
+elseif ($content == "간식") {
+echo <<< EDO
+  {
+      "message": {
+          "text": "오늘 간식은 {meal}입니다."
+      }
+  }
+EDO;
+}
 ?>
