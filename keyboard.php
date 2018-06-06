@@ -3,8 +3,9 @@ echo <<< EOD
 {
     "type" : "buttons",
     "buttons" : [
-        "오늘 급식",
-        "내일 급식"
+        "아침",
+        "점심",
+        "저녁"
     ]
 }
 EOD;
