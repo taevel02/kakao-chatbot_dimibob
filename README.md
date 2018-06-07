@@ -3,3 +3,6 @@
 
 이미지의 저작권은 [DIMIBOB](https://www.facebook.com/WidgetDIMIBOB/)에게 있습니다.
 디미밥 API의 저작권은 [DIMIBOB](https://github.com/dimigoin/node-dimibob)에게 있습니다.
+
+# Server
+닷홈 무료 호스팅을 사용합니다.
