@@ -4,42 +4,41 @@
 
     $date = date("Y.m.d");
 
-    include("functions/echoKakao.php");
-    include("functions/meals.php");
+    include 'functions/meals.php';
 
-    if ( strcmp($content, "아침") == false ) {
-        $final = getmeal1();
-        start_echo();
-            start_msg();
-                echo_text($date . " 아침\\n" . $final, 0);
-            end_msg(1);
-        end_echo();
-    }
-    
-    else if ( strcmp($content, "점심") == false ) {
-        $final = getmeal2();
-        start_echo();
-            start_msg();
-                echo_text($date . " 점심\\n" . $final, 0);
-            end_msg(1);
-        end_echo();
+    if ( $content == "아침" ) {
+      $meal = getmeal1();
+      echo '{
+        "message": {
+             "text": "'$date' . 아침\\n . '$meal'";
+        }
+      }';
     }
 
-    else if ( strcmp($content, "저녁") == false ) {
-        $final = getmeal3();
-        start_echo();
-            start_msg();
-                echo_text($date . " 저녁\\n" . $final, 0);
-            end_msg(1);
-        end_echo();
+    else if ( $content == "점심" ) {
+      $meal = getmeal2();
+      echo '{
+        "message": {
+             "text": "'$date' . 점심\\n . '$meal'";
+        }
+      }';
     }
 
-    else if ( strcmp($content, "간식") == false ) {
-        $final = getmeal4();
-        start_echo();
-            start_msg();
-                echo_text($date . " 간식\\n" . $final, 0);
-            end_msg(1);
-        end_echo();
+    else if ( $content == "저녁" ) {
+      $meal = getmeal3();
+      echo '{
+        "message": {
+             "text": "'$date' . 저녁\\n . '$meal'";
+        }
+      }';
+    }
+
+    else if ( $content == "간식" ) {
+      $meal = getmeal4();
+      echo '{
+        "message": {
+             "text": "'$date' . 간식\\n . '$meal'";
+        }
+      }';
     }
 ?>

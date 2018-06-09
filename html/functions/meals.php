@@ -28,7 +28,7 @@
       $ln = $result_json->lunch; // 점심 파싱
 
       if ( strcmp($ln, '') == false ) {
-        $final = "급식 정보가 없습니다."; // 급식이 없을 경우
+        $ln = "급식 정보가 없습니다."; // 급식이 없을 경우
       }
 
       return $ln;
