@@ -1,72 +1,79 @@
 <?php
-    $data = json_decode(file_get_contents('php://input'), true);
-    $content = $data["content"];
+$data = json_decode(file_get_contents('php://input'), true);
+$content = $data["content"];
+
+$header = array(
+  'Content-type: application/json',
+);
+
+$url = "'https://api.dimigo.in/dimibobs/today'";
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_POST, false);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+$result = curl_exec($ch);
+curl_close($ch);
+
+$result_arr = json_decode($result, true);
+
+$breakfast = $result_arr['breakfast'];
+#if ($breakfast == null) $breakfast_show = "급식 정보가 없습니다.";
+#else $breakfast_show = "오늘 아침은 $breakfast 입니다.";
+
+$lunch = $result_arr['lunch'];
+#if ($lunch == null) $lunch_show = "급식 정보가 없습니다.";
+#else $lunch_show = "오늘 점심은 $lunch 입니다.";
+
+$dinner = $result_arr['dinner'];
+#if ($dinner == null) $dinner_show = "급식 정보가 없습니다.";
+#else $dinner_show = "오늘 저녁은 $dinner 입니다.";
+
+$snack = $result_arr['snack'];
+#if ($snack == null) $snack_show = "간식 정보가 없습니다.";
+#else $snack_show = "오늘 간식은 $snack 입니다."
 
 
-    $date = date("Y.m.d");
-
-
-    header("Content-type: application/json; charset=UTF-8"); // json type and UTF-8 encoding
-    $URL = "https://api.dimigo.in/dimibobs/" . $date; // DOMDocument
-
-    $json = file_get_contents($URL); // json 파싱
-    $result_json = json_decode($json);
-
-    $bf = $result_json->breakfast; // 아침 파싱
-    $ln = $result_json->lunch; // 점심 파싱
-    $dn = $result_json->dinner; // 저녁 파싱
-    $sn = $result_json->snack; // 간식 파싱
-
-    if ( strcmp($bf, '') == false ) {
-      $bf = "급식 정보가 없습니다."; // 급식이 없을 경우
+if ($content == "아침") {
+echo <<< EOD
+  {
+    "message": {
+         "text": "'$breakfast'"
     }
+  }
+EOD;
+}
 
-    if ( strcmp($ln, '') == false ) {
-      $ln = "급식 정보가 없습니다."; // 급식이 없을 경우
+else if ($content == "점심")  {
+echo <<< EOD
+  {
+    "message": {
+         "text": "$lunch"
     }
+  }
+EOD;
+}
 
-    if ( strcmp($dn, '') == false ) {
-      $dn = "급식 정보가 없습니다."; // 급식이 없을 경우
+else if ($content == "저녁") {
+echo <<< EOD
+  {
+    "message": {
+         "text": "$dinner"
     }
+  }
+EOD;
+}
 
-    if ( strcmp($sn, '') == false ) {
-      $sn = "급식 정보가 없습니다."; // 급식이 없을 경우
+else if ($content == "간식") {
+echo <<< EOD
+  {
+    "message": {
+         "text": "$snack"
     }
-
-
-    if( $content == "아침" ) {
-      $meal = substr(json_encode($bf), 1, -1);
-      echo '{
-        "message": {
-             "text": "$meal"
-        }
-      }';
-    }
-
-    elseif( $content == "점심" ) {
-      $meal = substr(json_encode($ln), 1, -1);
-      echo '{
-        "message": {
-             "text": "$meal"
-        }
-      }';
-    }
-
-    elseif( $content == "저녁" ) {
-      $meal = substr(json_encode($dn), 1, -1);
-      echo '{
-        "message": {
-             "text": "$meal"
-        }
-      }';
-    }
-
-    elseif( $content == "간식" ) {
-      $meal = substr(json_encode($sn), 1, -1);
-      echo '{
-        "message": {
-             "text": "$meal"
-        }
-      }';
-    }
+  }
+EOD;
+}
 ?>
