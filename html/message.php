@@ -7,6 +7,7 @@ $header = array(
 );
 
 $date = date("Ymd");
+$date_show = date("m월 d일");
 $url = 'https://api.dimigo.in/dimibobs/' . $date;
 
 // Open connection
@@ -26,19 +27,19 @@ $result_arr = json_decode($result, true);
 
 $breakfast = $result_arr['breakfast'];
 if ($breakfast == null) $breakfast_show = "급식 정보가 없습니다.";
-else $breakfast_show = "오늘 아침은 $breakfast 입니다.";
+else $breakfast_show = "오늘($date_show) 아침은 $breakfast 입니다.";
 
 $lunch = $result_arr['lunch'];
 if ($lunch == null) $lunch_show = "급식 정보가 없습니다.";
-else $lunch_show = "오늘 점심은 $lunch 입니다.";
+else $lunch_show = "오늘($date_show) 점심은 $lunch 입니다.";
 
 $dinner = $result_arr['dinner'];
 if ($dinner == null) $dinner_show = "급식 정보가 없습니다.";
-else $dinner_show = "오늘 저녁은 $dinner 입니다.";
+else $dinner_show = "오늘($date_show) 저녁은 $dinner 입니다.";
 
 $snack = $result_arr['snack'];
 if ($snack == null) $snack_show = "간식 정보가 없습니다.";
-else $snack_show = "오늘 간식은 $snack 입니다.";
+else $snack_show = "오늘($date_show) 간식은 $snack 입니다.";
 
 
 if ($content == "아침") {
