@@ -6,7 +6,8 @@ $header = array(
   'Content-type: application/json',
 );
 
-$url = 'https://api.dimigo.in/dimibobs/today';
+$date = date("Ymd");
+$url = 'https://api.dimigo.in/dimibobs/' . $date;
 
 // Open connection
 $ch = curl_init();
