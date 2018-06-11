@@ -6,3 +6,7 @@
 
 # Server
 닷홈 무료 호스팅을 사용합니다.
+
+# Thanks
+
+KDMHS 김도완
