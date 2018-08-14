@@ -8,11 +8,11 @@ $header = array(
 
 $date = date("Ymd");
 $date_show = date("m월 d일");
-$url = 'https://api.dimigo.in/dimibobs/' . $date;
+$url = 'https://api.dimigo.in/dimibobes/' . $date;
 
 $tomorrow = date("Ymd", mktime(0, 0, 0, date("m"), date("d")+1, date("Y")));
 $tomorrow_show = date("m월 d일", mktime(0, 0, 0, date("m"), date("d")+1, date("Y")));
-$url2 = 'https://api.dimigo.in/dimibobs/' . $tomorrow;
+$url2 = 'https://api.dimigo.in/dimibobes/' . $tomorrow;
 
 
 
