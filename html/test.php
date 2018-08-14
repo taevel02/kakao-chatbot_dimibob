@@ -10,7 +10,7 @@ $headers = array(
 );
 // query string
 
-$url = 'https://api.dimigo.in/dimibobs/20180326';
+$url = 'https://api.dimigo.in/dimibobes/20180326';
 // Open connection
 $ch = curl_init();
 // Set the url, number of GET vars, GET data
